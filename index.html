@@ -120,7 +120,7 @@
                     <p class="text-orange-100 mt-2 text-sm">One-time payment</p>
                 </div>
                 <div class="p-8 text-left">
-                    <ul class="space-y-4">
+                    <ul class="space-y-4 mb-6">
                         <li class="flex items-start">
                             <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                             <span><strong>Unlimited Projects</strong> - Build as many apps as you want.</span>
@@ -142,8 +142,15 @@
                             <span><strong>Community Support</strong> - Lifetime access to our Discord.</span>
                         </li>
                     </ul>
+
+                    <!-- NEW: Email Input Field -->
+                    <div class="mb-4">
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Account Email</label>
+                        <input type="email" id="email" placeholder="you@example.com" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition" required>
+                    </div>
+
                     <!-- Updated Button to trigger Paystack -->
-                    <button id="paystack-btn" class="mt-8 w-full gradient-bg text-white py-4 rounded-lg font-bold text-lg hover:opacity-90 transition shadow-md">
+                    <button id="paystack-btn" class="w-full gradient-bg text-white py-4 rounded-lg font-bold text-lg hover:opacity-90 transition shadow-md">
                         Register for $30 Now
                     </button>
                     <p class="text-center text-xs text-gray-400 mt-4">Secured by Paystack. Test mode active.</p>
@@ -173,35 +180,35 @@
         document.getElementById('paystack-btn').addEventListener('click', function(e) {
             e.preventDefault();
             
-            // Generate a random reference for the transaction
+            // 1. Get the email the user typed in
+            const userEmail = document.getElementById('email').value;
+
+            // 2. Make sure they actually typed an email
+            if (!userEmail) {
+                alert('Please enter your email address to continue.');
+                return; // Stop the function if email is empty
+            }
+
+            // 3. Generate a random reference for the transaction
             const uniqueRef = 'FBZ-' + Math.floor((Math.random() * 1000000000) + 1);
 
-            // Setup Paystack payment
+            // 4. Setup Paystack payment
             const handler = PaystackPop.setup({
-                // Your Test Public Key
                 key: 'pk_test_1a06d3876580e5b945916e8363f36fe74aa75041', 
-                email: 'testuser@example.com', // In a real app, you'd capture the user's email
-                
-                // CHARGING IN CEDIS: $30 = GHS 345.77
-                // Paystack requires the amount in pesewas (multiply by 100)
-                amount: 34577, 
-                
-                // Processing as GHS for your Ghanaian account
+                email: userEmail, // Use the email they typed!
+                amount: 34577, // $30 USD converted to GHS 345.77 (in pesewas)
                 currency: 'GHS', 
                 ref: uniqueRef, 
                 callback: function(response) {
-                    // This happens when the payment is successful
                     alert('Payment successful! Transaction reference: ' + response.reference);
-                    // You can redirect the user to a success page here:
                     // window.location.href = '/success.html?ref=' + response.reference;
                 },
                 onClose: function() {
-                    // This happens if the user closes the modal without paying
                     alert('Payment window closed.');
                 }
             });
             
-            // Open the Paystack modal
+            // 5. Open the Paystack modal
             handler.openIframe();
         });
     </script>
