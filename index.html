@@ -174,44 +174,37 @@
             <p class="mt-4 md:mt-0 text-sm">&copy; 2023 Firebasez. All rights reserved.</p>
         </div>
     </footer>
-
     <!-- Paystack Integration Script -->
     <script>
         document.getElementById('paystack-btn').addEventListener('click', function(e) {
             e.preventDefault();
             
-            // 1. Get the email the user typed in
             const userEmail = document.getElementById('email').value;
 
-            // 2. Make sure they actually typed an email
             if (!userEmail) {
                 alert('Please enter your email address to continue.');
-                return; // Stop the function if email is empty
+                return;
             }
 
-            // 3. Generate a random reference for the transaction
             const uniqueRef = 'FBZ-' + Math.floor((Math.random() * 1000000000) + 1);
 
-            // 4. Setup Paystack payment
             const handler = PaystackPop.setup({
                 key: 'pk_test_1a06d3876580e5b945916e8363f36fe74aa75041', 
-                email: userEmail, // Use the email they typed!
-                amount: 34577, // $30 USD converted to GHS 345.77 (in pesewas)
+                email: userEmail, 
+                amount: 34577, 
                 currency: 'GHS', 
                 ref: uniqueRef, 
                 callback: function(response) {
-                    alert('Payment successful! Transaction reference: ' + response.reference);
-                    // window.location.href = '/success.html?ref=' + response.reference;
+                    // REDIRECT TO SUCCESS PAGE
+                    window.location.href = 'success.html?ref=' + response.reference;
                 },
                 onClose: function() {
                     alert('Payment window closed.');
                 }
             });
             
-            // 5. Open the Paystack modal
             handler.openIframe();
         });
     </script>
-
 </body>
 </html>
