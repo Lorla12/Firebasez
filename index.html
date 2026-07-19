@@ -178,11 +178,16 @@
 
             // Setup Paystack payment
             const handler = PaystackPop.setup({
-                // REPLACE THIS WITH YOUR ACTUAL PAYSTACK TEST PUBLIC KEY
+                // Your Test Public Key
                 key: 'pk_test_1a06d3876580e5b945916e8363f36fe74aa75041', 
                 email: 'testuser@example.com', // In a real app, you'd capture the user's email
-                amount: 3000, // Amount is in cents! $30.00 = 3000
-                currency: 'USD', 
+                
+                // CHARGING IN CEDIS: $30 = GHS 345.77
+                // Paystack requires the amount in pesewas (multiply by 100)
+                amount: 34577, 
+                
+                // Processing as GHS for your Ghanaian account
+                currency: 'GHS', 
                 ref: uniqueRef, 
                 callback: function(response) {
                     // This happens when the payment is successful
