@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Successful - Firebasez</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg {
+            background: linear-gradient(135deg, #FFA500 0%, #FF6B00 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 flex items-center justify-center min-h-screen">
+
+    <div class="max-w-lg w-full bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden mx-4">
+        
+        <!-- Top Banner -->
+        <div class="gradient-bg p-8 text-center text-white">
+            <!-- Success Checkmark Icon -->
+            <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 shadow-lg">
+                <svg class="w-12 h-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </div>
+            <h1 class="text-3xl font-extrabold mb-2">Payment Successful!</h1>
+            <p class="text-orange-100">Your Firebasez lifetime account is now active.</p>
+        </div>
+
+        <!-- Details Section -->
+        <div class="p-8 text-center">
+            <p class="text-gray-600 mb-6">Thank you for your purchase! A receipt and your login credentials have been sent to your email address. You can now start building your realtime applications.</p>
+            
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-8">
+                <p class="text-sm text-gray-500 uppercase tracking-wider mb-1">Transaction Reference</p>
+                <!-- This is where the JS will inject the reference number -->
+                <p id="ref-number" class="text-lg font-bold text-gray-800 break-all">Loading...</p>
+            </div>
+
+            <a href="index.html" class="block w-full gradient-bg text-white py-4 rounded-lg font-bold text-lg hover:opacity-90 transition shadow-md mb-4">
+                Go to Dashboard
+            </a>
+            <a href="index.html" class="text-sm text-gray-500 hover:text-orange-500 transition">Return to Homepage</a>
+        </div>
+
+    </div>
+
+    <!-- Script to grab the reference from the URL -->
+    <script>
+        // Get the reference number from the URL (?ref=FBZ-123456)
+        const urlParams = new URLSearchParams(window.location.search);
+        const ref = urlParams.get('ref');
+
+        // Put it into the page
+        if (ref) {
+            document.getElementById('ref-number').innerText = ref;
+        } else {
+            document.getElementById('ref-number').innerText = "No reference found.";
+        }
+    </script>
+
+</body>
+</html>
