@@ -119,9 +119,8 @@
                     </div>
                     <p class="text-orange-100 mt-2 text-sm">One-time payment</p>
                 </div>
-                
                 <div class="p-8 text-left">
-                    <ul class="space-y-4 mb-8">
+                    <ul class="space-y-4">
                         <li class="flex items-start">
                             <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                             <span><strong>Unlimited Projects</strong> - Build as many apps as you want.</span>
@@ -132,32 +131,22 @@
                         </li>
                         <li class="flex items-start">
                             <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span><strong>Serverless Functions</strong> - 1M invocations/month.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                             <span><strong>AI API Gateway</strong> - Connect your own keys, no markup.</span>
                         </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span><strong>Community Support</strong> - Lifetime access to our Discord.</span>
+                        </li>
                     </ul>
-
-                    <!-- Payment Area -->
-                    <div id="payment-area">
-                        <!-- Email Input -->
-                        <label for="email-input" class="block text-sm font-medium text-gray-700 mb-2">Enter your email to register</label>
-                        <input type="email" id="email-input" placeholder="you@example.com" class="w-full px-4 py-3 border border-gray-300 rounded-lg mb-4 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition" required>
-                        
-                        <button id="paystack-btn" class="w-full gradient-bg text-white py-4 rounded-lg font-bold text-lg hover:opacity-90 transition shadow-md">
-                            Register for $30 Now
-                        </button>
-                        <p class="text-center text-xs text-gray-400 mt-4">Secured by Paystack. Test mode active.</p>
-                    </div>
-
-                    <!-- Success Message (Hidden by default) -->
-                    <div id="success-area" class="hidden text-center py-8">
-                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Payment Successful!</h3>
-                        <p class="text-gray-600 mb-4">Welcome to Firebasez. Your lifetime access is activated.</p>
-                        <p class="text-xs text-gray-400">Transaction Ref: <span id="ref-display" class="font-mono"></span></p>
-                    </div>
-
+                    <!-- Updated Button to trigger Paystack -->
+                    <button id="paystack-btn" class="mt-8 w-full gradient-bg text-white py-4 rounded-lg font-bold text-lg hover:opacity-90 transition shadow-md">
+                        Register for $30 Now
+                    </button>
+                    <p class="text-center text-xs text-gray-400 mt-4">Secured by Paystack. Test mode active.</p>
                 </div>
             </div>
         </div>
@@ -184,35 +173,31 @@
         document.getElementById('paystack-btn').addEventListener('click', function(e) {
             e.preventDefault();
             
-            // 1. Get the email the user typed in
-            const userEmail = document.getElementById('email-input').value;
-            
-            // Basic validation to make sure they typed an email
-            if(!userEmail) {
-                alert('Please enter your email address to continue.');
-                return;
-            }
-
-            // 2. Generate a random reference for the transaction
+            // Generate a random reference for the transaction
             const uniqueRef = 'FBZ-' + Math.floor((Math.random() * 1000000000) + 1);
 
-            // 3. Setup Paystack payment
+            // Setup Paystack payment
             const handler = PaystackPop.setup({
+                // Your Test Public Key
                 key: 'pk_test_1a06d3876580e5b945916e8363f36fe74aa75041', 
-                email: userEmail, 
-                amount: 34577, // $30 USD = GHS 345.77 (in pesewas)
+                email: 'testuser@example.com', // In a real app, you'd capture the user's email
+                
+                // CHARGING IN CEDIS: $30 = GHS 345.77
+                // Paystack requires the amount in pesewas (multiply by 100)
+                amount: 34577, 
+                
+                // Processing as GHS for your Ghanaian account
                 currency: 'GHS', 
                 ref: uniqueRef, 
                 callback: function(response) {
-                    // 4. Hide the payment area and show the success area
-                    document.getElementById('payment-area').classList.add('hidden');
-                    document.getElementById('success-area').classList.remove('hidden');
-                    
-                    // 5. Display the transaction reference to the user
-                    document.getElementById('ref-display').textContent = response.reference;
+                    // This happens when the payment is successful
+                    alert('Payment successful! Transaction reference: ' + response.reference);
+                    // You can redirect the user to a success page here:
+                    // window.location.href = '/success.html?ref=' + response.reference;
                 },
                 onClose: function() {
-                    console.log('Payment window closed.');
+                    // This happens if the user closes the modal without paying
+                    alert('Payment window closed.');
                 }
             });
             
