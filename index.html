@@ -34,12 +34,12 @@
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#features" class="text-gray-600 hover:text-orange-500 transition">Features</a>
-                    <a href="#ai" class="text-gray-600 hover:text-orange-500 transition">AI</a>
+                    <a href="#docs" class="text-gray-600 hover:text-orange-500 transition">Developers</a>
                     <a href="#pricing" class="text-gray-600 hover:text-orange-500 transition">Pricing</a>
                     <a href="#faq" class="text-gray-600 hover:text-orange-500 transition">FAQ</a>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <a href="#" class="hidden sm:block text-gray-600 hover:text-orange-500 transition">Login</a>
+                    <a href="dashboard.html" class="hidden sm:block text-gray-600 hover:text-orange-500 transition">Login</a>
                     <a href="#pricing" class="gradient-bg text-white px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition shadow-md">Get Started</a>
                 </div>
             </div>
@@ -99,6 +99,67 @@
                     <h3 class="text-xl font-bold mb-2">AI Integration</h3>
                     <p class="text-gray-600">Pre-built APIs for OpenAI, Anthropic, and open-source models. Add chatbots, RAG, and image generation instantly.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Start / Code Section -->
+    <section id="docs" class="py-20 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                
+                <!-- Left Side: Text -->
+                <div>
+                    <span class="inline-block bg-orange-500/20 text-orange-400 px-3 py-1 rounded-full text-sm font-semibold mb-4">Developer Experience</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Ship in minutes, not weeks</h2>
+                    <p class="text-gray-400 text-lg mb-6">
+                        Our lightweight SDK works seamlessly across Web, Mobile, and Server environments. Connect to your realtime database and deploy AI functions with just a few lines of code.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center text-gray-300">
+                            <svg class="w-5 h-5 text-green-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Edge-deployed for zero latency
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <svg class="w-5 h-5 text-green-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            TypeScript support out of the box
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <svg class="w-5 h-5 text-green-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Built-in AI model routing
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Right Side: Fake Code Block -->
+                <div class="bg-gray-950 rounded-2xl border border-gray-800 overflow-hidden shadow-2xl">
+                    <!-- Window Dots -->
+                    <div class="flex items-center bg-gray-800/50 px-4 py-3 border-b border-gray-800">
+                        <div class="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
+                        <div class="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
+                        <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                        <span class="ml-2 text-gray-500 text-sm font-mono">app.js</span>
+                    </div>
+                    <!-- Code Content -->
+                    <pre class="p-6 text-sm font-mono leading-relaxed overflow-x-auto"><code><span class="text-purple-400">import</span> <span class="text-orange-400">{ Firebasez }</span> <span class="text-purple-400">from</span> <span class="text-green-400">'firebasez-sdk'</span>;
+
+<span class="text-purple-400">const</span> <span class="text-blue-400">fbz</span> = <span class="text-purple-400">new</span> <span class="text-yellow-400">Firebasez</span>({
+  <span class="text-gray-500">// The key you got from your dashboard</span>
+  <span class="text-blue-400">apiKey</span>: <span class="text-green-400">'fbz_sk_live_99Z1xP7...'</span>
+});
+
+<span class="text-gray-500">// 1. Listen to Realtime Data</span>
+<span class="text-blue-400">fbz</span>.<span class="text-yellow-400">database</span>().<span class="text-yellow-400">on</span>(<span class="text-green-400">'users/123'</span>, (<span class="text-orange-400">data</span>) => {
+  <span class="text-purple-400">console</span>.<span class="text-yellow-400">log</span>(<span class="text-green-400">'Live update:'</span>, <span class="text-orange-400">data</span>);
+});
+
+<span class="text-gray-500">// 2. Run an AI Function</span>
+<span class="text-purple-400">const</span> <span class="text-blue-400">response</span> = <span class="text-purple-400">await</span> <span class="text-blue-400">fbz</span>.<span class="text-yellow-400">ai</span>.<span class="text-yellow-400">generate</span>({
+  <span class="text-blue-400">model</span>: <span class="text-green-400">'gpt-4o'</span>,
+  <span class="text-blue-400">prompt</span>: <span class="text-green-400">'Write a welcome email'</span>
+});</code></pre>
+                </div>
+
             </div>
         </div>
     </section>
