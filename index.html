@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Firebasez - Realtime Backend & AI Integration</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Include Paystack Inline JS Library -->
+    <script src="https://js.paystack.co/v1/inline.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -26,7 +28,6 @@
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
                     <div class="flex items-center space-x-2">
-                        <!-- Fake Logo -->
                         <svg class="w-8 h-8 text-orange-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 4l6.5 14h-13L12 6z"/></svg>
                         <span class="font-extrabold text-xl tracking-tight">Firebasez</span>
                     </div>
@@ -76,4 +77,129 @@
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Feature 1 -->
                 <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition">
-                    <div class="
+                    <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Realtime Database</h3>
+                    <p class="text-gray-600">Synchronize data across all clients in milliseconds. Built for low-latency, high-performance applications.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition">
+                    <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Serverless Backend</h3>
+                    <p class="text-gray-600">Deploy secure backend code without managing servers. Auto-scaling, secure, and incredibly fast.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition">
+                    <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">AI Integration</h3>
+                    <p class="text-gray-600">Pre-built APIs for OpenAI, Anthropic, and open-source models. Add chatbots, RAG, and image generation instantly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-gray-50">
+        <div class="max-w-3xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Stop paying monthly subscriptions</h2>
+            <p class="text-lg text-gray-600 mb-12">One payment. Lifetime access. No hidden fees.</p>
+            
+            <div class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden max-w-md mx-auto">
+                <div class="gradient-bg p-8 text-white">
+                    <h3 class="text-2xl font-bold">Lifetime Registration</h3>
+                    <p class="text-orange-100 mt-2">Pay once, build forever.</p>
+                    <div class="mt-6 flex items-end justify-center">
+                        <span class="text-6xl font-extrabold">$30</span>
+                        <span class="text-xl mb-2 ml-2">USD</span>
+                    </div>
+                    <p class="text-orange-100 mt-2 text-sm">One-time payment</p>
+                </div>
+                <div class="p-8 text-left">
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span><strong>Unlimited Projects</strong> - Build as many apps as you want.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span><strong>Realtime Database</strong> - 10GB bandwidth/month included.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span><strong>Serverless Functions</strong> - 1M invocations/month.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span><strong>AI API Gateway</strong> - Connect your own keys, no markup.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span><strong>Community Support</strong> - Lifetime access to our Discord.</span>
+                        </li>
+                    </ul>
+                    <!-- Updated Button to trigger Paystack -->
+                    <button id="paystack-btn" class="mt-8 w-full gradient-bg text-white py-4 rounded-lg font-bold text-lg hover:opacity-90 transition shadow-md">
+                        Register for $30 Now
+                    </button>
+                    <p class="text-center text-xs text-gray-400 mt-4">Secured by Paystack. Test mode active.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                <svg class="w-6 h-6 text-orange-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 4l6.5 14h-13L12 6z"/></svg>
+                <span class="font-extrabold text-white text-lg">Firebasez</span>
+            </div>
+            <div class="flex space-x-6 text-sm">
+                <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition">Terms of Service</a>
+                <a href="#" class="hover:text-white transition">Contact Us</a>
+            </div>
+            <p class="mt-4 md:mt-0 text-sm">&copy; 2023 Firebasez. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Paystack Integration Script -->
+    <script>
+        document.getElementById('paystack-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Generate a random reference for the transaction
+            const uniqueRef = 'FBZ-' + Math.floor((Math.random() * 1000000000) + 1);
+
+            // Setup Paystack payment
+            const handler = PaystackPop.setup({
+                // REPLACE THIS WITH YOUR ACTUAL PAYSTACK TEST PUBLIC KEY
+                key: 'pk_test_YOUR_TEST_KEY_HERE', 
+                email: 'testuser@example.com', // In a real app, you'd capture the user's email
+                amount: 3000, // Amount is in cents! $30.00 = 3000
+                currency: 'USD', 
+                ref: uniqueRef, 
+                callback: function(response) {
+                    // This happens when the payment is successful
+                    alert('Payment successful! Transaction reference: ' + response.reference);
+                    // You can redirect the user to a success page here:
+                    // window.location.href = '/success.html?ref=' + response.reference;
+                },
+                onClose: function() {
+                    // This happens if the user closes the modal without paying
+                    alert('Payment window closed.');
+                }
+            });
+            
+            // Open the Paystack modal
+            handler.openIframe();
+        });
+    </script>
+
+</body>
+</html>
