@@ -217,7 +217,7 @@
                     <button id="paystack-btn" class="w-full gradient-bg text-white py-4 rounded-lg font-bold text-lg hover:opacity-90 transition shadow-md">
                         Register for $30 Now
                     </button>
-                    <p class="text-center text-xs text-gray-400 mt-4">Secured by Paystack. Test mode active.</p>
+                    <p class="text-center text-xs text-gray-400 mt-4">Secured by Paystack. Payments are encrypted.</p>
                 </div>
             </div>
         </div>
@@ -365,7 +365,7 @@
 
             // 5. Setup Paystack payment
             const handler = PaystackPop.setup({
-                key: 'pk_test_1a06d3876580e5b945916e8363f36fe74aa75041', 
+                key: 'pk_live_f3fbda09891d1c617cb5dcf6e503c09a759c86d7', // YOUR LIVE KEY IS NOW ACTIVE
                 email: userEmail, 
                 amount: 34577, // $30 USD converted to GHS 345.77 (in pesewas)
                 currency: 'GHS', 
